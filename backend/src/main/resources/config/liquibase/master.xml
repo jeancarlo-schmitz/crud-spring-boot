@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.sql" relativeToChangelogFile="false"/>
+
+    <!-- schemas -->
+    <include  file="config/liquibase/user/changelog/000001_user_initial_schema.sql" relativeToChangelogFile="false"/>
+
+    <!-- seeds -->
+    <include  file="config/liquibase/core/seed/000001_core_seed.sql" relativeToChangelogFile="false"/>
+
+    <!-- test data -->
+    <include  file="config/liquibase/core/test-data/000001_user_test_data.sql" relativeToChangelogFile="false" context="test"/>
+
+    <!-- sample data -->
+    <include  file="config/liquibase/location/sample/000001_location_data.sql" relativeToChangelogFile="false" context="sample"/>
+
+    <!-- views -->
+    <include  file="config/liquibase/enquire/changelog/000002_enquire_views.sql" relativeToChangelogFile="false"/>
+
+</databaseChangeLog>

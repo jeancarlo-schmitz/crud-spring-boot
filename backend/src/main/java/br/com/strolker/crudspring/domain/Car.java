@@ -42,8 +42,8 @@ public class Car extends DatabaseObject {
     @CreationTimestamp
     private OffsetDateTime createdAt;
     
-    @Column(name = "deleted_at")
-    private OffsetDateTime deletedAt;
+    @Column(name = "updated_at")
+    private OffsetDateTime updatedAt;
     
     @Column(name = "deleted")
     private boolean isDeleted;
@@ -96,12 +96,12 @@ public class Car extends DatabaseObject {
 		this.createdAt = createdAt;
 	}
 
-	public OffsetDateTime getDeletedAt() {
-		return deletedAt;
+	public OffsetDateTime getUpdatedAt() {
+		return updatedAt;
 	}
 
-	public void setDeletedAt(OffsetDateTime deletedAt) {
-		this.deletedAt = deletedAt;
+	public void setUpdatedAt(OffsetDateTime updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	public boolean isDeleted() {
@@ -116,6 +116,6 @@ public class Car extends DatabaseObject {
 	public String toString() {
 		return "Car [name=" + name + ", idCarBrand=" + idBrand + ", categoryType=" + categoryType
 				+ ", yearFabrication=" + yearFabrication + ", chassi=" + chassi + ", createdAt=" + createdAt
-				+ ", deletedAt=" + deletedAt + ", isDeleted=" + isDeleted + "]";
+				+ ", updatedAt=" + updatedAt + ", isDeleted=" + isDeleted + "]";
 	}
 }
