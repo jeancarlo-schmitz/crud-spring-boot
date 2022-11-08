@@ -21,10 +21,12 @@
 		<jhipster-dependency.version>7.0.1</jhipster-dependency.version>
 		<mapstruct.version>1.5.3.Final</mapstruct.version>
 		<hibernate-dependency.version>6.1.6.Final</hibernate-dependency.version>
+<!-- 		<hibernate.version>5.5.0.Final</hibernate.version> -->
         <liquibase.version>4.3.2</liquibase.version>
         <liquibase-hibernate5.version>4.3.2</liquibase-hibernate5.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <spring-boot.version>2.4.4</spring-boot.version>
+        <vladmihalcea-dependency.version>2.4.4</vladmihalcea-dependency.version>
 	</properties>
 	
 	
@@ -77,6 +79,13 @@
 		    <version>${mapstruct.version}</version>
 		</dependency>
 		
+<!--        	<dependency> -->
+<!--             <groupId>org.mapstruct</groupId> -->
+<!--             <artifactId>mapstruct-processor</artifactId> -->
+<!--             <version>${mapstruct.version}</version> -->
+<!--             <scope>provided</scope> -->
+<!--         </dependency> -->
+		
 		<dependency>
             <groupId>tech.jhipster</groupId>
             <artifactId>jhipster-framework</artifactId>
@@ -87,6 +96,12 @@
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
             <version>${liquibase.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>hibernate-types-52</artifactId>
+            <version>${vladmihalcea-dependency.version}</version>
         </dependency>
 	</dependencies>
 
@@ -100,6 +115,34 @@
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
             </plugin>
+            
+<!--             <plugin> -->
+<!--                 <groupId>org.apache.maven.plugins</groupId> -->
+<!--                 <artifactId>maven-compiler-plugin</artifactId> -->
+<!--                 <configuration> -->
+<!--                     <source>${java.version}</source> -->
+<!--                     <target>${java.version}</target> -->
+<!--                     <annotationProcessorPaths> -->
+<!--                         <path> -->
+<!--                             <groupId>org.springframework.boot</groupId> -->
+<!--                             <artifactId>spring-boot-configuration-processor</artifactId> -->
+<!--                             <version>${spring-boot.version}</version> -->
+<!--                         </path> -->
+<!--                         <path> -->
+<!--                             <groupId>org.mapstruct</groupId> -->
+<!--                             <artifactId>mapstruct-processor</artifactId> -->
+<!--                             <version>${mapstruct.version}</version> -->
+<!--                         </path> -->
+<!--                         For JPA static metamodel generation -->
+<!--                         <path> -->
+<!--                             <groupId>org.hibernate</groupId> -->
+<!--                             <artifactId>hibernate-jpamodelgen</artifactId> -->
+<!--                             <version>${hibernate.version}</version> -->
+<!--                         </path> -->
+<!--                         jhipster-needle-maven-add-annotation-processor -->
+<!--                     </annotationProcessorPaths> -->
+<!--                 </configuration> -->
+<!--             </plugin> -->
 		</plugins>
 		
 		<pluginManagement>

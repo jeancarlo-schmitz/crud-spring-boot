@@ -11,9 +11,13 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+
+import com.vladmihalcea.hibernate.type.basic.PostgreSQLEnumType;
 
 @Entity
 @Table(schema = "car", name = "car")
+@TypeDef(name = "pgsql_enum", typeClass = PostgreSQLEnumType.class)
 public class Car extends DatabaseObject {
 
 	@NotNull
@@ -44,9 +48,6 @@ public class Car extends DatabaseObject {
     
     @Column(name = "updated_at")
     private OffsetDateTime updatedAt;
-    
-    @Column(name = "deleted")
-    private boolean isDeleted;
 
 	public String getName() {
 		return name;
@@ -104,18 +105,10 @@ public class Car extends DatabaseObject {
 		this.updatedAt = updatedAt;
 	}
 
-	public boolean isDeleted() {
-		return isDeleted;
-	}
-
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
-	}
-
 	@Override
 	public String toString() {
 		return "Car [name=" + name + ", idCarBrand=" + idBrand + ", categoryType=" + categoryType
 				+ ", yearFabrication=" + yearFabrication + ", chassi=" + chassi + ", createdAt=" + createdAt
-				+ ", updatedAt=" + updatedAt + ", isDeleted=" + isDeleted + "]";
+				+ ", updatedAt=" + updatedAt + "]";
 	}
 }
