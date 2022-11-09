@@ -17,16 +17,24 @@
 	
 	<properties>
 		<profile.no-liquibase />
-		<java.version>17</java.version>
+		<java.version>11</java.version>
 		<jhipster-dependency.version>7.0.1</jhipster-dependency.version>
-		<mapstruct.version>1.5.3.Final</mapstruct.version>
+		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
 		<hibernate-dependency.version>6.1.6.Final</hibernate-dependency.version>
+<!--         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version> -->
 <!-- 		<hibernate.version>5.5.0.Final</hibernate.version> -->
         <liquibase.version>4.3.2</liquibase.version>
         <liquibase-hibernate5.version>4.3.2</liquibase-hibernate5.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <spring-boot.version>2.4.4</spring-boot.version>
         <vladmihalcea-dependency.version>2.4.4</vladmihalcea-dependency.version>
+        
+        <!--Maven -->
+        
+        <maven.version>3.3.9</maven.version>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
 	</properties>
 	
 	
@@ -73,18 +81,11 @@
 			<version>${hibernate-dependency.version}</version>
 		</dependency>
 		
-		<dependency>
-		    <groupId>org.mapstruct</groupId>
-		    <artifactId>mapstruct</artifactId>
-		    <version>${mapstruct.version}</version>
-		</dependency>
-		
-<!--        	<dependency> -->
-<!--             <groupId>org.mapstruct</groupId> -->
-<!--             <artifactId>mapstruct-processor</artifactId> -->
-<!--             <version>${mapstruct.version}</version> -->
-<!--             <scope>provided</scope> -->
-<!--         </dependency> -->
+	    <dependency>
+	        <groupId>org.mapstruct</groupId>
+	        <artifactId>mapstruct</artifactId>
+	        <version>${org.mapstruct.version}</version>
+	    </dependency>
 		
 		<dependency>
             <groupId>tech.jhipster</groupId>
@@ -107,46 +108,41 @@
 
 	<build>
 		<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
             <plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
             </plugin>
-            
-<!--             <plugin> -->
-<!--                 <groupId>org.apache.maven.plugins</groupId> -->
-<!--                 <artifactId>maven-compiler-plugin</artifactId> -->
-<!--                 <configuration> -->
-<!--                     <source>${java.version}</source> -->
-<!--                     <target>${java.version}</target> -->
-<!--                     <annotationProcessorPaths> -->
-<!--                         <path> -->
-<!--                             <groupId>org.springframework.boot</groupId> -->
-<!--                             <artifactId>spring-boot-configuration-processor</artifactId> -->
-<!--                             <version>${spring-boot.version}</version> -->
-<!--                         </path> -->
-<!--                         <path> -->
-<!--                             <groupId>org.mapstruct</groupId> -->
-<!--                             <artifactId>mapstruct-processor</artifactId> -->
-<!--                             <version>${mapstruct.version}</version> -->
-<!--                         </path> -->
-<!--                         For JPA static metamodel generation -->
-<!--                         <path> -->
-<!--                             <groupId>org.hibernate</groupId> -->
-<!--                             <artifactId>hibernate-jpamodelgen</artifactId> -->
-<!--                             <version>${hibernate.version}</version> -->
-<!--                         </path> -->
-<!--                         jhipster-needle-maven-add-annotation-processor -->
-<!--                     </annotationProcessorPaths> -->
-<!--                 </configuration> -->
-<!--             </plugin> -->
 		</plugins>
 		
 		<pluginManagement>
-			<plugins>
+			<plugins>        			           	
+				<plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+		             <version>${maven-compiler-plugin.version}</version>
+		            <configuration>
+		                <source>${java.version}</source>
+		                <target>${java.version}</target>
+		                <annotationProcessorPaths>
+		                    <path>
+		                        <groupId>org.mapstruct</groupId>
+		                        <artifactId>mapstruct-processor</artifactId>
+		                        <version>${org.mapstruct.version}</version>
+		                    </path>
+		                </annotationProcessorPaths>
+		            </configuration>
+		        </plugin>
+		        
                 <plugin>
                     <groupId>org.liquibase</groupId>
                     <artifactId>liquibase-maven-plugin</artifactId>
@@ -196,13 +192,16 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	    <profiles>
-	        <profile>
-	            <id>no-liquibase</id>
-	            <properties>
-	                <profile.no-liquibase>,no-liquibase</profile.no-liquibase>
-	            </properties>
-	        </profile>
-        </profiles>
+	
+    <profiles>
+        <profile>
+            <id>no-liquibase</id>
+            <properties>
+                <profile.no-liquibase>,no-liquibase</profile.no-liquibase>
+            </properties>
+        </profile>
+        
+        
+       </profiles>
 
 </project>

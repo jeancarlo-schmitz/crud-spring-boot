@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import br.com.strolker.crudspring.domain.Car;
 import br.com.strolker.crudspring.service.dto.CarEdition;
 
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring")
 public interface CarMapper {
 
 	Car editionToDomain(CarEdition dto);

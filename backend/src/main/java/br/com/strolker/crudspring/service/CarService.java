@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.strolker.crudspring.domain.Car;
 import br.com.strolker.crudspring.repository.CarRepository;
 import br.com.strolker.crudspring.service.dto.CarEdition;
-//import br.com.strolker.crudspring.service.dto.mapper.CarMapper;
+import br.com.strolker.crudspring.service.dto.mapper.CarMapper;
 
 @Service
 @Transactional
@@ -17,13 +17,13 @@ public class CarService {
 	@Autowired
 	private CarRepository carRepository;
 	
-//	@Autowired
-//	private CarMapper carMapper;
+	@Autowired
+	private CarMapper carMapper;
 	
 	public Car saveCar(CarEdition carEdition) {
 		
-//		Car car = carMapper.editionToDomain(carEdition);
+		Car car = carMapper.editionToDomain(carEdition);
 		
-		return carRepository.save(null);
+		return carRepository.save(car);
 	}
 }
