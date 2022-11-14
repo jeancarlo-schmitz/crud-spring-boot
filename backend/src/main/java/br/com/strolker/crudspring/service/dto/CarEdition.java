@@ -1,30 +1,20 @@
 package br.com.strolker.crudspring.service.dto;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.annotations.Type;
-
-import br.com.strolker.crudspring.domain.CategoryType;
 
 public class CarEdition {
 
 	@NotBlank
 	private String name;
 	
-	@NotBlank
-	private String idBrand;
+	@NotNull
+	private Long idBrand;
 	
     @NotNull
-    @Enumerated(EnumType.STRING)
-    @Type(type = "pgsql_enum")
-    @Column(name = "category_type")
-	private CategoryType categoryType;
+	private Long idCategoryType;
     
-	@NotBlank
+    @NotNull
     private int yearFabrication;
     
 	@NotBlank
@@ -38,20 +28,20 @@ public class CarEdition {
 		this.name = name;
 	}
 
-	public String getIdBrand() {
+	public Long getIdBrand() {
 		return idBrand;
 	}
 
-	public void setIdBrand(String idBrand) {
+	public void setIdBrand(Long idBrand) {
 		this.idBrand = idBrand;
 	}
 
-	public CategoryType getCategoryType() {
-		return categoryType;
+	public Long getIdCategoryType() {
+		return idCategoryType;
 	}
 
-	public void setCategoryType(CategoryType categoryType) {
-		this.categoryType = categoryType;
+	public void setIdCategoryType(Long idCategoryType) {
+		this.idCategoryType = idCategoryType;
 	}
 
 	public int getYearFabrication() {

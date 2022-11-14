@@ -2,25 +2,35 @@ package br.com.strolker.crudspring.api;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.strolker.crudspring.domain.Car;
+import br.com.strolker.crudspring.domain.CarDetail;
+import br.com.strolker.crudspring.domain.CarSummary;
+import br.com.strolker.crudspring.domain.CarUpdate;
+import br.com.strolker.crudspring.exception.constants.CarExceptionConstants;
 import br.com.strolker.crudspring.service.CarService;
 import br.com.strolker.crudspring.service.dto.CarEdition;
 import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.PaginationUtil;
 
 @RestController
 @RequestMapping("/api/car")
@@ -37,40 +47,46 @@ public class CarResource {
 	@PostMapping
 	public ResponseEntity<Car> createCar(@Valid CarEdition carEdition) throws URISyntaxException{
 		
-		try {
-			Car result = carService.saveCar(carEdition);
-			return ResponseEntity.created(new URI("/api/car/" + result.getId()))
-					.headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME,
-							result.getId().toString()))
-					.body(result);
-		} catch (DataIntegrityViolationException e) {
-			System.out.println(e);
-//			throw new BadRequestAlertException("Name or code already exists", ENTITY_NAME, e.getMessage());
-			return null;
-		}
+		Car result = carService.create(carEdition);
+		
+		return ResponseEntity.created(new URI("/api/car/" + result.getId()))
+				.headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME,
+						result.getId().toString()))
+				.body(result);
 	}
 	
 	@GetMapping
-	public ResponseEntity<?> findAllCars(){
+	public ResponseEntity<List<CarSummary>> findAllCars(Pageable pageable){
+		Page<CarSummary> page = carService.findAll(pageable);
 		
-		return null;
+		HttpHeaders headers = PaginationUtil
+                .generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+		
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<?> findByIdCar(@PathVariable Long id){
+	public ResponseEntity<CarDetail> findByIdCar(@PathVariable Long id){
 		
-		return null;
+		CarDetail carDetail = carService.findById(id);
+		
+		return ResponseEntity.ok(carDetail);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateCar(@PathVariable Long id){
+	public ResponseEntity<CarDetail> updateCar(@RequestBody @Valid CarUpdate carUpdate, @PathVariable Long id){
+		CarDetail carUpdated = carService.update(carUpdate, id);
 		
-		return null;
+		return ResponseEntity.ok().headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, CarExceptionConstants.ENTITY_NAME,
+				carUpdated.getId().toString())).body(carUpdated);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteCar(@PathVariable Long id){
+	public ResponseEntity<Void> deleteCar(@PathVariable Long idCar){
+		carService.deleteById(idCar);
 		
-		return null;
+        return ResponseEntity.noContent()
+                .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, CarExceptionConstants.ENTITY_NAME, idCar.toString()))
+                .build();
 	}
 }

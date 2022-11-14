@@ -7,63 +7,64 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 @Entity
-@Table(schema = "car", name = "car")
-public class Car extends DatabaseObject {
+@Table(schema = "car", name = "car_detail")
+public class CarDetail {
 
-	@NotNull
+    @NotNull
+    private Long id;
+    
     @Column(name = "name")
 	private String name;
-	
-	@NotNull
-    @Column(name = "id_brand")
-	private Long idBrand;
     
-    @NotNull
-    @Column(name = "id_category_type")
-	private Long idCategoryType;
-	
-    @NotNull
+    @Column(name = "brand_name")
+    private String brandName;
+    
+    @Column(name = "category_type_name")
+    private String categoryTypeName;
+    
     @Column(name = "year_fabrication")
 	private int yearFabrication;
-	
-    @NotNull
+    
     @Column(name = "chassi")
-	private String chassi;
-	
-    @Column(name = "created_at", updatable = false)
-    @CreationTimestamp
+    private String chassi;
+    
+    @Column(name = "created_at")
     private OffsetDateTime createdAt;
     
-    @Column(name = "updated_at", insertable = false)
-    @UpdateTimestamp
+    @Column(name = "updated_at")
     private OffsetDateTime updatedAt;
 
 	public String getName() {
 		return name;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public Long getIdBrand() {
-		return idBrand;
+	public String getBrandName() {
+		return brandName;
 	}
 
-	public void setIdBrand(Long idBrand) {
-		this.idBrand = idBrand;
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
 	}
 
-	public Long getIdCategoryType() {
-		return idCategoryType;
+	public String getCategoryTypeName() {
+		return categoryTypeName;
 	}
 
-	public void setIdCategoryType(Long idCategoryType) {
-		this.idCategoryType = idCategoryType;
+	public void setCategoryTypeName(String categoryTypeName) {
+		this.categoryTypeName = categoryTypeName;
 	}
 
 	public int getYearFabrication() {
@@ -96,12 +97,5 @@ public class Car extends DatabaseObject {
 
 	public void setUpdatedAt(OffsetDateTime updatedAt) {
 		this.updatedAt = updatedAt;
-	}
-
-	@Override
-	public String toString() {
-		return "Car [name=" + name + ", idCarBrand=" + idBrand + ", idCategoryType=" + idCategoryType
-				+ ", yearFabrication=" + yearFabrication + ", chassi=" + chassi + ", createdAt=" + createdAt
-				+ ", updatedAt=" + updatedAt + "]";
 	}
 }

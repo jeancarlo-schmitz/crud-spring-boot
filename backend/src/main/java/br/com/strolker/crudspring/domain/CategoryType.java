@@ -1,32 +1,21 @@
 package br.com.strolker.crudspring.domain;
 
-public enum CategoryType {
-	AVENTUREIRO_COMPACTO, HATCH_SUBCOMPACTO
-	
-	/*HATCH COMPACTO
-	HATCH MÉDIO
-	SEDÃ COMPACTO
-	SEDÃ MÉDIO
-	SEDÃ GRANDE
-	FAMILIAR COMPACTO
-	FAMILIAR MÉDIO
-	FAMILIAR GRANDE
-	PICAPE COMPACTA
-	PICAPE MÉDIA
-	PICAPE GRANDE
-	SUV COMPACTO
-	SUV MÉDIO
-	SUV GRANDE
-	ESPORTIVO COMPACTO
-	ESPORTIVO MÉDIO
-	ESPORTIVO GRANDE
-	CONVERSÍVEL COMPACTO
-	CONVERSÍVEL MÉDIO
-	CONVERSÍVEL GRANDE
-	VAN MÉDIA
-	VAN GRANDE
-	JIPE
-	FURGÃO COMPACTO
-	FURGÃO MÉDIO
-	CAMINHÃO URBANO*/
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(schema = "car", name = "category_type")
+public class CategoryType extends DatabaseObject {
+
+	@NotNull
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

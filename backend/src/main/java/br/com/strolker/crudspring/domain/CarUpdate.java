@@ -1,19 +1,17 @@
 package br.com.strolker.crudspring.domain;
 
-import java.time.OffsetDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 @Entity
-@Table(schema = "car", name = "car")
-public class Car extends DatabaseObject {
-
+@Table(schema = "car", name = "car_update")
+public class CarUpdate {
+	
+    @NotNull
+    private Long id;
+    
 	@NotNull
     @Column(name = "name")
 	private String name;
@@ -33,14 +31,14 @@ public class Car extends DatabaseObject {
     @NotNull
     @Column(name = "chassi")
 	private String chassi;
-	
-    @Column(name = "created_at", updatable = false)
-    @CreationTimestamp
-    private OffsetDateTime createdAt;
-    
-    @Column(name = "updated_at", insertable = false)
-    @UpdateTimestamp
-    private OffsetDateTime updatedAt;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -82,26 +80,4 @@ public class Car extends DatabaseObject {
 		this.chassi = chassi;
 	}
 
-	public OffsetDateTime getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(OffsetDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public OffsetDateTime getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(OffsetDateTime updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	@Override
-	public String toString() {
-		return "Car [name=" + name + ", idCarBrand=" + idBrand + ", idCategoryType=" + idCategoryType
-				+ ", yearFabrication=" + yearFabrication + ", chassi=" + chassi + ", createdAt=" + createdAt
-				+ ", updatedAt=" + updatedAt + "]";
-	}
 }

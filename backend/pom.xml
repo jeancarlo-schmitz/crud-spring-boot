@@ -73,6 +73,11 @@
 		    <artifactId>validation-api</artifactId>
 		</dependency>
 		
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-tx</artifactId>
+		</dependency>
+		
 			
 		<!-- Versioned dependencies -->	
 		<dependency>

@@ -7,11 +7,12 @@
     <include file="config/liquibase/changelog/00000000000000_initial_schema.sql" relativeToChangelogFile="false"/>
 
     <!-- schemas -->
-    <include  file="config/liquibase/main/changelog/000001_brand_initial_schema.sql" relativeToChangelogFile="false"/>
     <include  file="config/liquibase/main/changelog/000001_car_initial_schema.sql" relativeToChangelogFile="false"/>
 
     <!-- seeds -->
-<!--     <include  file="config/liquibase/core/seed/000001_core_seed.sql" relativeToChangelogFile="false"/> -->
+    <include  file="config/liquibase/main/seed/000001_brand_seed.sql" relativeToChangelogFile="false"/>
+    <include  file="config/liquibase/main/seed/000001_category_type_seed.sql" relativeToChangelogFile="false"/>
+<!--     <include  file="config/liquibase/main/seed/000001_car_seed.sql" relativeToChangelogFile="false"/> -->
 
     <!-- views -->
 <!--     <include  file="config/liquibase/enquire/changelog/000002_enquire_views.sql" relativeToChangelogFile="false"/> -->
