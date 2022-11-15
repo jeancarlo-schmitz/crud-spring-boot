@@ -1,4 +1,4 @@
-package br.com.strolker.crudspring.domain;
+package br.com.strolker.crudspring.domain.car;
 
 import java.time.OffsetDateTime;
 
@@ -8,13 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.Where;
-
 @Entity
-@Table(schema = "car", name = "car_summary")
-@Where(clause = "deleted = false")
-public class CarSummary{
-	
+@Table(schema = "car", name = "car_detail")
+public class CarDetail {
+
 	@Id
     @NotNull
     private Long id;
@@ -27,26 +24,29 @@ public class CarSummary{
     
     @Column(name = "category_type_name")
     private String categoryTypeName;
-
-	@Column(name = "year_fabrication")
+    
+    @Column(name = "year_fabrication")
 	private int yearFabrication;
+    
+    @Column(name = "chassi")
+    private String chassi;
     
     @Column(name = "created_at")
     private OffsetDateTime createdAt;
     
     @Column(name = "updated_at")
     private OffsetDateTime updatedAt;
-    
-    public Long getId() {
+
+	public String getName() {
+		return name;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-	
-	public String getName() {
-		return name;
 	}
 
 	public void setName(String name) {
@@ -75,6 +75,14 @@ public class CarSummary{
 
 	public void setYearFabrication(int yearFabrication) {
 		this.yearFabrication = yearFabrication;
+	}
+
+	public String getChassi() {
+		return chassi;
+	}
+
+	public void setChassi(String chassi) {
+		this.chassi = chassi;
 	}
 
 	public OffsetDateTime getCreatedAt() {

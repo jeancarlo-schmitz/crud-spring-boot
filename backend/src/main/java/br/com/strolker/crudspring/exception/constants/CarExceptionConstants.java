@@ -1,6 +1,6 @@
 package br.com.strolker.crudspring.exception.constants;
 
-import br.com.strolker.crudspring.domain.Car;
+import br.com.strolker.crudspring.domain.car.Car;
 
 public class CarExceptionConstants {
 	

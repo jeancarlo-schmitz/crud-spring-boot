@@ -1,8 +1,10 @@
-package br.com.strolker.crudspring.domain;
+package br.com.strolker.crudspring.domain.category.type;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import br.com.strolker.crudspring.domain.core.DatabaseObject;
 
 @Entity
 @Table(schema = "car", name = "category_type")

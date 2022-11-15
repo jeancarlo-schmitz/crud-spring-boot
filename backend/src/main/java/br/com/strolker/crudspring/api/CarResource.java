@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.com.strolker.crudspring.domain.Car;
-import br.com.strolker.crudspring.domain.CarDetail;
-import br.com.strolker.crudspring.domain.CarSummary;
+import br.com.strolker.crudspring.domain.car.Car;
+import br.com.strolker.crudspring.domain.car.CarDetail;
+import br.com.strolker.crudspring.domain.car.CarSummary;
 import br.com.strolker.crudspring.exception.constants.CarExceptionConstants;
 import br.com.strolker.crudspring.service.CarService;
 import br.com.strolker.crudspring.service.dto.CarEdition;

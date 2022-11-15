@@ -1,4 +1,4 @@
-package br.com.strolker.crudspring.domain;
+package br.com.strolker.crudspring.domain.brand;
 
 import java.time.OffsetDateTime;
 
@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import br.com.strolker.crudspring.domain.core.DatabaseObject;
 
 @Entity
 @Table(name = "brand", schema = "car")

@@ -28,3 +28,17 @@ FROM
 JOIN car.brand b ON b.id = c.id_brand AND b.is_active
 JOIN car.category_type ct ON ct.id = c.id_category_type
 WHERE NOT c.deleted;
+
+CREATE OR REPLACE VIEW car.brand_summary
+AS SELECT b.id,
+	b."name"
+FROM
+	car.brand b
+WHERE b.is_active;
+
+CREATE OR REPLACE VIEW car.category_type_summary
+AS SELECT ct.id,
+	ct."name"
+FROM
+	car.category_type ct
+WHERE not ct.deleted;

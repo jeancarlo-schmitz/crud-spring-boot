@@ -1,4 +1,4 @@
-package br.com.strolker.crudspring.domain;
+package br.com.strolker.crudspring.domain.car;
 
 import java.time.OffsetDateTime;
 
@@ -8,6 +8,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import br.com.strolker.crudspring.domain.core.DatabaseObject;
 
 @Entity
 @Table(schema = "car", name = "car")

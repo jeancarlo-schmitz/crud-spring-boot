@@ -6,9 +6,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.strolker.crudspring.domain.Car;
-import br.com.strolker.crudspring.domain.CarDetail;
-import br.com.strolker.crudspring.domain.CarSummary;
+import br.com.strolker.crudspring.domain.car.Car;
+import br.com.strolker.crudspring.domain.car.CarDetail;
+import br.com.strolker.crudspring.domain.car.CarSummary;
 import br.com.strolker.crudspring.repository.CarDetailRepository;
 import br.com.strolker.crudspring.repository.CarRepository;
 import br.com.strolker.crudspring.repository.CarSummaryRepository;

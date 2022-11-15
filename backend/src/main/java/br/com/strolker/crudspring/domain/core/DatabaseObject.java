@@ -1,4 +1,4 @@
-package br.com.strolker.crudspring.domain;
+package br.com.strolker.crudspring.domain.core;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
