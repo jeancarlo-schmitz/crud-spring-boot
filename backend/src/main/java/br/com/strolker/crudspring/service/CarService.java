@@ -9,11 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.strolker.crudspring.domain.Car;
 import br.com.strolker.crudspring.domain.CarDetail;
 import br.com.strolker.crudspring.domain.CarSummary;
-import br.com.strolker.crudspring.domain.CarUpdate;
 import br.com.strolker.crudspring.repository.CarDetailRepository;
 import br.com.strolker.crudspring.repository.CarRepository;
 import br.com.strolker.crudspring.repository.CarSummaryRepository;
 import br.com.strolker.crudspring.service.dto.CarEdition;
+import br.com.strolker.crudspring.service.dto.CarUpdate;
 import br.com.strolker.crudspring.service.dto.mapper.CarMapper;
 
 @Service
@@ -46,9 +46,17 @@ public class CarService {
 		
 		carMapper.update(carFound, carUpdate);
 		
+		setUpdatedAt(carFound);
+		
+		
 		carRepository.saveAndFlush(carFound);
 		
 		return this.findById(id);
+	}
+
+	private void setUpdatedAt(Car carFound) {
+		carFound.setUpdatedAt();
+		
 	}
 
 	private void validateFieldsBeforeUpdateCar(CarUpdate carUpdate) {

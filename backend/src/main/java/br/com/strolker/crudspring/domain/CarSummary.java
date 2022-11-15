@@ -4,6 +4,7 @@ import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -14,6 +15,7 @@ import org.hibernate.annotations.Where;
 @Where(clause = "deleted = false")
 public class CarSummary{
 	
+	@Id
     @NotNull
     private Long id;
     

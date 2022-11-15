@@ -8,7 +8,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(schema = "car", name = "car")
@@ -39,7 +38,6 @@ public class Car extends DatabaseObject {
     private OffsetDateTime createdAt;
     
     @Column(name = "updated_at", insertable = false)
-    @UpdateTimestamp
     private OffsetDateTime updatedAt;
 
 	public String getName() {
@@ -94,8 +92,8 @@ public class Car extends DatabaseObject {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(OffsetDateTime updatedAt) {
-		this.updatedAt = updatedAt;
+	public void setUpdatedAt() {
+		this.updatedAt = OffsetDateTime.now();
 	}
 
 	@Override

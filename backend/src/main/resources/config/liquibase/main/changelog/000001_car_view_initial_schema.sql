@@ -5,7 +5,8 @@ AS SELECT c.id,
 	ct."name" as category_type_name,
 	c.year_fabrication,
 	c.created_at,
-	c.updated_at
+	c.updated_at,
+	c.deleted
 FROM
 	car.car c
 JOIN car.brand b ON b.id = c.id_brand AND b.is_active
@@ -20,7 +21,8 @@ AS SELECT c.id,
 	c.year_fabrication,
 	c.chassi,
 	c.created_at,
-	c.updated_at
+	c.updated_at,
+	c.deleted
 FROM
 	car.car c
 JOIN car.brand b ON b.id = c.id_brand AND b.is_active

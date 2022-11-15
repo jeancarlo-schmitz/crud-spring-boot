@@ -1,16 +1,13 @@
-package br.com.strolker.crudspring.domain;
+package br.com.strolker.crudspring.service.dto;
+
+import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(schema = "car", name = "car_update")
+import org.hibernate.annotations.UpdateTimestamp;
+
 public class CarUpdate {
-	
-    @NotNull
-    private Long id;
     
 	@NotNull
     @Column(name = "name")
@@ -31,14 +28,10 @@ public class CarUpdate {
     @NotNull
     @Column(name = "chassi")
 	private String chassi;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+    
+    @Column(name = "updated_at", insertable = false)
+    @UpdateTimestamp
+    private OffsetDateTime updatedAt;
 
 	public String getName() {
 		return name;
@@ -80,4 +73,9 @@ public class CarUpdate {
 		this.chassi = chassi;
 	}
 
+	@Override
+	public String toString() {
+		return "CarUpdate [name=" + name + ", idBrand=" + idBrand + ", idCategoryType=" + idCategoryType
+				+ ", yearFabrication=" + yearFabrication + ", chassi=" + chassi + ", updatedAt=" + updatedAt + "]";
+	}
 }

@@ -25,10 +25,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.com.strolker.crudspring.domain.Car;
 import br.com.strolker.crudspring.domain.CarDetail;
 import br.com.strolker.crudspring.domain.CarSummary;
-import br.com.strolker.crudspring.domain.CarUpdate;
 import br.com.strolker.crudspring.exception.constants.CarExceptionConstants;
 import br.com.strolker.crudspring.service.CarService;
 import br.com.strolker.crudspring.service.dto.CarEdition;
+import br.com.strolker.crudspring.service.dto.CarUpdate;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
 
@@ -78,15 +78,15 @@ public class CarResource {
 		CarDetail carUpdated = carService.update(carUpdate, id);
 		
 		return ResponseEntity.ok().headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, CarExceptionConstants.ENTITY_NAME,
-				carUpdated.getId().toString())).body(carUpdated);
+				id.toString())).body(carUpdated);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteCar(@PathVariable Long idCar){
-		carService.deleteById(idCar);
+	public ResponseEntity<Void> deleteCar(@PathVariable Long id){
+		carService.deleteById(id);
 		
         return ResponseEntity.noContent()
-                .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, CarExceptionConstants.ENTITY_NAME, idCar.toString()))
+                .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, CarExceptionConstants.ENTITY_NAME, id.toString()))
                 .build();
 	}
 }
