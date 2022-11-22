@@ -8,9 +8,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import br.com.strolker.crudspring.domain.core.DatabaseObject;
 
+@CrossOrigin(maxAge = 3600)
 @Entity
 @Table(schema = "car", name = "car")
 public class Car extends DatabaseObject {
