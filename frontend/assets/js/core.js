@@ -1,7 +1,3 @@
-// function testandoMuito (){
-// 	console.log("GWSGWEGWEFSEF");
-// }
-
 $(document).ready(function(){
 	// Activate tooltip
 	$('[data-toggle="tooltip"]').tooltip();
@@ -25,3 +21,8 @@ $(document).ready(function(){
 		}
 	});
 });
+
+
+// function editCarAssistant(carId){
+//     console.log("carId: " + carId);
+// }

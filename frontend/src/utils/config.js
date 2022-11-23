@@ -1,8 +1,8 @@
  const config = {
      resources: {
-         car: "car",
-         brand: "brand",
-         categoryType: "category-type",
+         car: "car/",
+         brand: "brand/",
+         categoryType: "category-type/",
      },
      links: {
          urlBackend: 'non-exists =D',

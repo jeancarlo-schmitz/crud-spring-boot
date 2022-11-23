@@ -10,8 +10,14 @@ carHelper.buildCarListInScreen = function (carsList) {
     showCarSnippetInScreen();
 }
 
-carHelper.getIdCar = function (carElement) {
-    return carElement.data('car-id');
+carHelper.buildModalEditCar = function(carDetail, categoryTypeList, brandList){
+    console.log(carDetail);
+    console.log(categoryTypeList);
+    console.log(brandList);
+}
+
+carHelper.showModalEditCar = function(){
+    console.log("Mostrando o Modal");
 }
 
 function buildCarLine(car) {
@@ -24,8 +30,8 @@ function buildCarLine(car) {
     html += "<td>" + car.categoryTypeName + "</td>";
     html += "<td>" + adjustedDate + "</td>";
     html += "<td>";
-    html += "<a href=\"#\" class=\"edit editCar\" data-car-id=\""+ car.id +"\" ><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>";
-    html += "<a href=\"#\" class=\"delete\" id=\"deleteCar\" data-car-id=\""+ car.id +"\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a>";
+    html += "<a href=\"#\" class=\"edit\" onclick=\"app.editCar("+ car.id +")\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>";
+    html += "<a href=\"#\" class=\"delete\" id=\"deleteCar\" onclick=\"app.deleteCar("+ car.id +")\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a>";
     html += "</td>";
     html += "</tr>";
 }
